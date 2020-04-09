@@ -8,6 +8,7 @@ import dev.ihm.options.OptionTerminer;
 import dev.service.IPlatService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -18,17 +19,26 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class Menu {
 
-		
-    private Map<Integer, IOptionMenu> actions = new HashMap<>();
+    private Map<Integer, IOptionMenu> actions;
 
     private String menu;
     private Scanner scanner;
 
-    public Menu(Scanner scanner, IPlatService service) {
-        actions.put(1, new OptionListerPlats(service));
-        actions.put(2, new OptionAjouterPlat(scanner, service));
-        actions.put(99, new OptionTerminer());
+    public Menu(Scanner scanner, List<IOptionMenu> options) {
         this.scanner = scanner;
+        this.actions = buildActions(options);
+    }
+
+    public Map<Integer, IOptionMenu> buildActions(List<IOptionMenu>  options){
+        Map<Integer, IOptionMenu> actions = new HashMap<Integer, IOptionMenu>();
+        int compteur = 1;
+        for(IOptionMenu opt : options) {
+
+            actions.put(compteur, opt);
+            compteur++;
+        }
+
+        return actions;
     }
 
     public void afficher() {
