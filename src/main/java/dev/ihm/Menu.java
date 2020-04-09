@@ -11,11 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
+@Controller
 public class Menu {
 
+		
     private Map<Integer, IOptionMenu> actions = new HashMap<>();
 
     private String menu;

@@ -9,10 +9,12 @@ import org.springframework.context.annotation.PropertySource;
 
 
 
-// cas DAO Mémoire
+// cas DAO Mémoire : ajout d'un @ dans la classe PlatDaoMemoire
 // Le stéréotype @Configuration précise que cette classe servira de configuration.
 @Configuration
 @ComponentScan({"dev.ihm", "dev.service","dev.dao"})
+
+// Cas Dao Fichier
 @PropertySource("app.properties")
 public class AppConfig {
 	
